@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AmanHotDev | Engineering Excellence 🚀</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: #0a0f1d; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        
+        /* 🌌 NAVIGATION BAR */
+        .navbar { background: rgba(10, 15, 29, 0.85); backdrop-filter: blur(12px); width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: sticky; top: 0; z-index: 100; }
+        .brand-name { font-size: 1.6rem; font-weight: 800; color: #ffffff; letter-spacing: -1px; cursor: pointer; }
+        .brand-name span { color: #00ffcc; }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #00ffcc; text-shadow: 0 0 10px rgba(0, 255, 204, 0.5); }
+
+        /* 🚀 PROJECTS HEADER */
+        .projects-section { flex: 1; padding: 60px 8%; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .section-title span { background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-subtitle { color: #94a3b8; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+        /* 📊 CYBER GRID LAYOUT */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px; }
+        
+        /* 🔮 GLASSMORPHIC CARD DESIGN */
+        .project-card { background: #070a14; border: 1px solid rgba(255,255,255,0.03); border-radius: 20px; padding: 30px; position: relative; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); }
+        .project-card::after { content: ''; position: absolute; inset: 0; border-radius: 20px; padding: 1px; background: linear-gradient(135deg, rgba(0,255,204,0.1), rgba(0,188,255,0.1)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; transition: 0.4s; }
+        
+        /* CARD HOVER EFFECTS */
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 255, 204, 0.15); border-color: rgba(0, 255, 204, 0.3); }
+        .project-card:hover::after { background: linear-gradient(135deg, #00ffcc, #00bcff); }
+
+        .project-icon { font-size: 2rem; margin-bottom: 20px; display: inline-block; }
+        .project-name { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+        .project-desc { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex: 1; }
+
+        /* 🚀 TECH TAGS */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+        .tech-badge { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); color: #00ffcc; font-size: 0.75rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        /* 🔗 ACTION BUTTONS */
+        .card-actions { display: flex; gap: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; }
+        .btn-action { flex: 1; text-align: center; text-decoration: none; padding: 10px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 700; transition: 0.3s; }
+        
+        .btn-live { background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%); color: #0a0f1d; box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2); }
+        .btn-live:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4); }
+        
+        .btn-code { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
+        .btn-code:hover { border-color: #ffffff; color: #ffffff; background: rgba(255,255,255,0.02); }
+
+        /* 🔄 LOADING ANIMATION STYLE */
+        .loading-text { text-align: center; color: #00ffcc; font-size: 1.2rem; font-weight: 600; width: 100%; grid-column: 1 / -1; margin-top: 35px; }
+
+        footer { width: 100%; text-align: center; padding: 25px; color: #475569; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.03); background: #070a14; margin-top: auto; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) { .navbar { padding: 15px 6%; } .section-title { font-size: 2rem; } .projects-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand-name" onclick="window.location.href='index.html'">Aman<span>Hot</span>Dev</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="hire.html">Hire Me</a></li>
+        </ul>
+    </nav>
+
+    <section class="projects-section">
+        <div class="section-header">
+            <h2 class="section-title">Engineered <span>Deployments</span></h2>
+            <p class="section-subtitle">A real-time database grid rendering live dynamic production builds automatically from firestore nodes.</p>
+        </div>
+
+        <div class="projects-grid" id="projectsContainer">
+            <p class="loading-text">Fetching cloud node architectures...</p>
+        </div>
+    </section>
+
+    <footer>&copy; 2026 AmanHotDev Systems. Engineered for continuous excellence.</footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // 🌟 APKA CONFIG COMPLETELY INTEGRATED HERE
+        const firebaseConfig = {
+            apiKey: "AIzaSyBf9AlfMXqYzRZh3vnykAAoI8ICWnLEr5w",
+            authDomain: "portfolio-ea55d.firebaseapp.com",
+            projectId: "portfolio-ea55d",
+            storageBucket: "portfolio-ea55d.firebasestorage.app",
+            messagingSenderId: "764954959365",
+            appId: "1:764954959365:web:c210d543eb899302b8866c"
+        };
+
+        // Initialize Firebase Layout
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const container = document.getElementById('projectsContainer');
+
+        // Real-time Cloud Database Sync
+        function fetchProjects() {
+            try {
+                db.collection("projects").onSnapshot((querySnapshot) => {
+                    container.innerHTML = ""; // Clear loader text
+                    
+                    if(querySnapshot.empty) {
+                        container.innerHTML = `<p class="loading-text" style='color: #94a3b8;'>No live projects found in cloud storage.</p>`;
+                        return;
+                    }
+
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        
+                        // Compiling Dynamic Tech Badges
+                        let badgesHTML = '';
+                        if (data.tech) {
+                            // Splits tech by comma or bullets automatically
+                            data.tech.split(/[•,;]+/).forEach(tag => {
+                                if(tag.trim().length > 0) {
+                                    badgesHTML += `<span class="tech-badge">${tag.trim()}</span>`;
+                                }
+                            });
+                        } else {
+                            badgesHTML = `<span class="tech-badge">Web Build</span>`;
+                        }
+                        
+                        // Generating Premium Card Structure
+                        const cardHTML = `
+                            <div class="project-card">
+                                <div>
+                                    <span class="project-icon">${data.icon || '🚀'}</span>
+                                    <h3 class="project-name">${data.title || 'Untitled Project'}</h3>
+                                    <p class="project-desc">${data.desc || 'No description matrix provided.'}</p>
+                                    <div class="tech-stack">
+                                        ${badgesHTML}
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    ${data.liveLink ? `<a href="${data.liveLink}" target="_blank" class="btn-action btn-live">View Live</a>` : ''}
+                                    ${data.codeLink ? `<a href="${data.codeLink}" target="_blank" class="btn-action btn-code">GitHub</a>` : ''}
+                                </div>
+                            </div>
+                        `;
+                        container.innerHTML += cardHTML;
+                    });
+                });
+            } catch (error) {
+                console.error("Cloud Node Sync Failure:", error);
+                container.innerHTML = `<p class="loading-text" style='color: #ff4a4a;'>Pipeline sync aborted due to transmission failure.</p>`;
+            }
+        }
+
+        // Trigger loading stream
+        window.addEventListener('DOMContentLoaded', fetchProjects);
+    </script>
+</body>
+</html>

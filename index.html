@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aman Hot Dev | Premium Full Stack Portfolio 🚀</title>
+    <style>
+        /* ================= 🌌 CYBERPUNK DARK TECH CORE STYLES ================= */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0a0f1d; /* Deep Premium Rich Black-Blue */
+            color: #f1f5f9;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 📡 GLOWING MODERN NAVBAR */
+        .navbar {
+            background: rgba(10, 15, 29, 0.85);
+            backdrop-filter: blur(12px);
+            width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .brand-name {
+            font-size: 1.6rem; font-weight: 800;
+            color: #ffffff; letter-spacing: -1px;
+        }
+        .brand-name span { color: #00ffcc; } /* Neon Mint Accent */
+
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: #94a3b8;
+            font-weight: 600; font-size: 1rem; transition: 0.3s;
+        }
+        .nav-links a:hover { color: #00ffcc; text-shadow: 0 0 10px rgba(0, 255, 204, 0.5); }
+
+        /* 🚀 HERO DYNAMIC LAYOUT */
+        .hero-section {
+            min-height: calc(100vh - 80px);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 40px 10%; gap: 30px; flex-wrap: wrap;
+        }
+
+        .hero-left { flex: 1.2; min-width: 320px; z-index: 10; }
+        .hero-badge {
+            display: inline-block; background: rgba(0, 255, 204, 0.1);
+            color: #00ffcc; padding: 6px 18px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px;
+            margin-bottom: 25px; border: 1px solid rgba(0, 255, 204, 0.2);
+        }
+        .hero-title { font-size: 4rem; font-weight: 800; line-height: 1.1; color: #ffffff; }
+        .hero-title span {
+            background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle { font-size: 1.2rem; color: #94a3b8; margin-top: 25px; line-height: 1.7; max-width: 550px; }
+
+        .hero-cta-group { display: flex; gap: 20px; margin-top: 40px; }
+        .btn-primary-cta {
+            background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%);
+            color: #0a0f1d; border: none; padding: 16px 38px; border-radius: 12px;
+            font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 255, 204, 0.3); transition: 0.3s ease;
+        }
+        .btn-primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 255, 204, 0.5);
+        }
+
+        /* ================= 🐙 RESPONSIVE OCTOPUS LAYER (HERO RIGHT) ================= */
+        .hero-right {
+            flex: 0.8; min-width: 280px; height: 380px;
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+        }
+
+        .avatar-responsive-wrapper {
+            position: relative;
+            display: flex; justify-content: center; align-items: center;
+            width: 100%; height: 100%;
+            touch-action: none;
+        }
+
+        .live-custom-avatar-shell {
+            width: 240px; height: 300px;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+            position: relative; z-index: 5;
+            animation: characterBreathingMicroJump 3.5s ease-in-out infinite;
+        }
+
+        @keyframes characterBreathingMicroJump {
+            0%, 100% { transform: translateY(0px) scaleX(1) scaleY(1); }
+            50% { transform: translateY(-14px) scaleX(0.98) scaleY(1.03); }
+        }
+
+        .mesh-body-base {
+            width: 170px; height: 180px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            border-radius: 55% 55% 45% 45%;
+            position: relative;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 20px 45px rgba(0, 255, 204, 0.15);
+        }
+
+        .mesh-face-eyes {
+            display: flex; gap: 24px; position: absolute; top: 55px; left: 38px;
+            transition: all 0.08s ease-out;
+        }
+
+        .socket-orbit-circle {
+            width: 44px; height: 44px; background: #ffffff; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; position: relative;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .pupil-dark-dot {
+            width: 20px; height: 20px; background: #0a0f1d; border-radius: 50%;
+            position: absolute; display: flex; justify-content: center; align-items: center;
+            transition: transform 0.01s linear;
+        }
+
+        .pupil-dark-dot::after {
+            content: ''; position: absolute; top: 3px; left: 3px;
+            width: 5px; height: 5px; background: #00ffcc; border-radius: 50%;
+        }
+
+        .tentacles-dock { display: flex; gap: 8px; margin-top: -6px; z-index: -1; }
+        .tentacle-leg {
+            width: 22px; height: 45px; background: #1e293b;
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            border-radius: 0 0 15px 15px;
+            animation: legWiggleMove 1.8s ease-in-out infinite alternate;
+            transform-origin: top center;
+        }
+        .tentacle-leg:nth-child(2) { animation-delay: 0.3s; background: #0f172a; }
+        .tentacle-leg:nth-child(3) { animation-delay: 0.6s; background: #1e293b; }
+
+        @keyframes legWiggleMove {
+            0% { transform: rotate(-8deg) translateY(0); }
+            100% { transform: rotate(12deg) translateY(-2px); }
+        }
+
+        /* ================= 🧠 IDENTITY MATRIX (ABOUT ME SECTION) ================= */
+        .about-container { padding: 90px 10%; background: #0a0f1d; position: relative; }
+        .about-container::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,188,255,0.2), transparent);
+        }
+        .bio-card { 
+            background: #070a14; border: 1px solid rgba(255,255,255,0.03); border-radius: 24px; 
+            padding: 40px; position: relative; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
+            margin-bottom: 40px; line-height: 1.8; max-width: 1000px; margin: 0 auto 40px auto;
+        }
+        .bio-card::after { 
+            content: ''; position: absolute; inset: 0; border-radius: 24px; padding: 1px; 
+            background: linear-gradient(135deg, rgba(0,255,204,0.1), rgba(0,188,255,0.1)); 
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
+            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; 
+        }
+        .bio-text { color: #94a3b8; font-size: 1.1rem; margin-bottom: 20px; text-align: center; }
+        .bio-text span { color: #ffffff; font-weight: 600; }
+
+        .about-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; max-width: 1000px; margin: 0 auto;
+        }
+        .sub-card { background: #070a14; border: 1px solid rgba(255,255,255,0.03); border-radius: 20px; padding: 30px; }
+        .sub-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; display: flex; align-items: center; gap: 10px; }
+        .sub-card h3 span { color: #00ffcc; }
+        
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag { 
+            background: #0a0f1d; border: 1px solid rgba(255, 255, 255, 0.06); color: #ffffff; 
+            padding: 8px 16px; border-radius: 12px; font-size: 0.9rem; font-weight: 600; transition: 0.3s; 
+        }
+        .skill-tag:hover { border-color: #00ffcc; color: #00ffcc; transform: translateY(-2px); }
+
+        .workflow-list { list-style: none; }
+        .workflow-list li { color: #94a3b8; font-size: 0.95rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .workflow-list li::before { content: '⚡'; color: #00bcff; font-size: 0.8rem; }
+
+        /* ================= 🛠️ EXPERT CORE SERVICES SECTION ================= */
+        .services-container { padding: 90px 10%; background: #070a14; position: relative; }
+        .section-title { font-size: 2.5rem; font-weight: 800; color: #ffffff; text-align: center; margin-bottom: 50px; }
+        .section-title span { color: #00ffcc; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .service-card { background: #0a0f1d; border: 1px solid rgba(255,255,255,0.03); padding: 35px 25px; border-radius: 16px; transition: 0.3s; }
+        .service-card:hover { border-color: #00bcff; transform: scale(1.02); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .service-title { font-size: 1.3rem; color: #ffffff; margin-bottom: 10px; font-weight: 700; }
+        .service-desc { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+
+        /* ================= 📈 LIVE STATISTICS STATUS DOCK ================= */
+        .stats-dock { background: #0a0f1d; padding: 50px 10%; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .stat-node { text-align: center; min-width: 180px; }
+        .stat-val { font-size: 2.8rem; font-weight: 800; color: #00ffcc; text-shadow: 0 0 15px rgba(0,255,204,0.3); }
+        .stat-lbl { font-size: 0.9rem; color: #64748b; font-weight: 700; letter-spacing: 1px; margin-top: 5px; text-transform: uppercase; }
+
+        /* ================= 🛠️ REAL-TIME FIREBASE REPOSITORIES SECTION ================= */
+        .section-container { padding: 90px 10%; background: #0a0f1d; position: relative; }
+        .section-container::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,255,204,0.2), transparent);
+        }
+
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        .project-card {
+            background: #070a14; border: 1px solid rgba(255,255,255,0.03);
+            padding: 35px 30px; border-radius: 16px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .project-card:hover {
+            transform: translateY(-8px); background: #0f172a; border-color: rgba(0, 255, 204, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 255, 204, 0.05);
+        }
+        .card-icon { font-size: 2.2rem; margin-bottom: 20px; display: inline-block; }
+        .card-title { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+        .card-desc { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        .loading-text { text-align: center; color: #00bcff; font-size: 1.1rem; width: 100%; font-weight: 600; }
+        
+        .btn-mini-view { display: inline-block; text-decoration: none; background: rgba(0,255,204,0.1); color: #00ffcc; border: 1px solid rgba(0,255,204,0.2); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-align: center; transition: 0.3s; width: fit-content; }
+        .btn-mini-view:hover { background: #00ffcc; color: #0a0f1d; }
+
+        footer {
+            width: 100%; text-align: center; padding: 35px; color: #475569;
+            font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.03); background: #070a14;
+        }
+
+        /* ================= 📱 MOBILE RESPONSIVE MEDIA VIEWPORTS ================= */
+        @media (max-width: 968px) {
+            .navbar { padding: 15px 6%; }
+            .hero-section { padding: 40px 6%; text-align: center; justify-content: center; gap: 10px; }
+            .hero-left { text-align: center; width: 100%; }
+            .hero-subtitle { margin: 25px auto 0 auto; }
+            .hero-cta-group { justify-content: center; }
+            
+            .hero-right { height: 320px; width: 100%; display: flex; justify-content: center; order: 2; }
+            .avatar-responsive-wrapper { transform: scale(0.85); width: auto; height: auto; }
+            .hero-title { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 580px) {
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.3rem; }
+            .avatar-responsive-wrapper { transform: scale(0.75); }
+            .hero-right { height: 260px; }
+            .portfolio-grid, .services-grid { grid-template-columns: 1fr; }
+            .bio-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand-name">Aman<span>Hot</span>Dev</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="arcade.html">Arcade</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <div class="hero-left">
+            <div class="hero-badge">OPEN FOR FREELANCE WORK ⚡</div>
+            <h1 class="hero-title">Crafting Digital Worlds With <span>Clean Code</span></h1>
+            <p class="hero-subtitle">Hi, I'm Aman. I design fast, immersive, and fully robust full-stack applications that scale smoothly across every viewport layer.</p>
+            <div class="hero-cta-group">
+                <button class="btn-primary-cta" onclick="window.location.href='hire.html'">Hire Me Directly 🚀</button>
+            </div>
+        </div>
+        
+        <div class="hero-right">
+            <div class="avatar-responsive-wrapper">
+                <div class="live-custom-avatar-shell" id="liveAvatarContainer">
+                    <div class="mesh-body-base">
+                        <div class="mesh-face-eyes" id="liveFaceLayer">
+                            <div class="socket-orbit-circle"><div class="pupil-dark-dot"></div></div>
+                            <div class="socket-orbit-circle"><div class="pupil-dark-dot"></div></div>
+                        </div>
+                    </div>
+                    <div class="tentacles-dock">
+                        <div class="tentacle-leg"></div>
+                        <div class="tentacle-leg"></div>
+                        <div class="tentacle-leg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-container" id="about">
+        <h2 class="section-title">Identity <span>Matrix</span></h2>
+        
+        <div class="bio-card">
+            <p class="bio-text">Hello! I'm <span>AmanHotDev</span>, a software engineer dedicated to building high-performance web systems and dynamic, interactive user interfaces.</p>
+            <p class="bio-text">I bridge the gap between pixel-perfect design and fast backend pipelines. My code architecture focus is always on <span>scalability, absolute security, and lightning-fast loading speeds</span>.</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="sub-card">
+                <h3><span>📁</span> Core Tech Stack</h3>
+                <div class="skills-container">
+                    <span class="skill-tag">HTML5 / CSS3</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">Firebase Systems</span>
+                    <span class="skill-tag">Git / GitHub</span>
+                    <span class="skill-tag">UI / UX Designs</span>
+                    <span class="skill-tag">Node.js Basics</span>
+                </div>
+            </div>
+
+            <div class="sub-card">
+                <h3><span>⚙️</span> Value Pipelines</h3>
+                <ul class="workflow-list">
+                    <li>Responsive Architecture Mastery</li>
+                    <li>Secure Inbound Data Streams</li>
+                    <li>Dynamic Real-time Cloud Sync</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-container" id="services">
+        <h2 class="section-title">Architectural <span>Capabilities</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🌐</span>
+                <h3 class="service-title">Full-Stack Web Builds</h3>
+                <p class="service-desc">Engineering lightning-fast, high-tech web environments optimized flawlessly for mobile devices and expansive screen layers alike.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">☁️</span>
+                <h3 class="service-title">Cloud DB Orchestration</h3>
+                <p class="service-desc">Integrating ultra-secure NoSQL backend real-time nodes via Firebase to allow data streams to render across screens instantly.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🔒</span>
+                <h3 class="service-title">Secure Grid Data Pipelines</h3>
+                <p class="service-desc">Building invisible inbound communication forms leveraging API routing layers like EmailJS to guard privacy nodes strictly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-dock">
+        <div class="stat-node">
+            <div class="stat-val">99.9%</div>
+            <div class="stat-lbl">Uptime Architecture</div>
+        </div>
+        <div class="stat-node">
+            <div class="stat-val">&lt;24ms</div>
+            <div class="stat-lbl">Response Latency</div>
+        </div>
+        <div class="stat-node">
+            <div class="stat-val">100%</div>
+            <div class="stat-lbl">Secure Handshakes</div>
+        </div>
+    </section>
+
+    <section class="section-container" id="projects">
+        <h2 class="section-title">Live <span>Cloud Repositories</span></h2>
+        <div class="portfolio-grid" id="homeProjectsContainer">
+            <p class="loading-text">Synchronizing live cloud data nodes...</p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 AmanHotDev Systems. Engineered for continuous excellence.
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // 🌟 CONFIG MATCHED WITH YOUR CLOUD NODE
+        const firebaseConfig = {
+            apiKey: "AIzaSyBf9AlfMXqYzRZh3vnykAAoI8ICWnLEr5w",
+            authDomain: "portfolio-ea55d.firebaseapp.com",
+            projectId: "portfolio-ea55d",
+            storageBucket: "portfolio-ea55d.firebasestorage.app",
+            messagingSenderId: "764954959365",
+            appId: "1:764954959365:web:c210d543eb899302b8866c"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const homeProjectsContainer = document.getElementById('homeProjectsContainer');
+
+        // Dynamic Database Sync System for Home Layout
+        function syncHomeProjects() {
+            try {
+                db.collection("projects").orderBy("timestamp", "desc").limit(3).onSnapshot((querySnapshot) => {
+                    homeProjectsContainer.innerHTML = "";
+                    
+                    if(querySnapshot.empty) {
+                        homeProjectsContainer.innerHTML = `<p class="loading-text" style='color: #64748b;'>No live cloud records found.</p>`;
+                        return;
+                    }
+
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        
+                        // 💡 1. Undefined Filter Check: Agar Data invalid ya undefined hai to skip karein
+                        if (!data || !data.title || data.title === "undefined" || data.title.trim() === "") {
+                            return; 
+                        }
+
+                        // 💡 2. Dynamic Live Link Injection: Anchor tag read document field URL directly
+                        const targetUrl = data.liveLink ? data.liveLink : "index.html";
+
+                        const projectCard = `
+                            <div class="project-card">
+                                <div>
+                                    <span class="card-icon">${data.icon || '🚀'}</span>
+                                    <h3 class="card-title">${data.title}</h3>
+                                    <p class="card-desc">${data.desc || 'No system specs provided.'}</p>
+                                </div>
+                                <a href="${targetUrl}" class="btn-mini-view">Explore Node 📁</a>
+                            </div>
+                        `;
+                        homeProjectsContainer.innerHTML += projectCard;
+                    });
+
+                    // Check if after filtering, container is empty
+                    if(homeProjectsContainer.innerHTML.trim() === "") {
+                        homeProjectsContainer.innerHTML = `<p class="loading-text" style='color: #64748b;'>No valid cloud records found.</p>`;
+                    }
+                });
+            } catch (error) {
+                console.error("Home Core Sync Failed:", error);
+                homeProjectsContainer.innerHTML = `<p class="loading-text" style='color: #ff4a4a;'>Node sync offline.</p>`;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', syncHomeProjects);
+
+        // Core Eye Tracking Logic Function
+        function trackLookAt(clientX, clientY) {
+            const pupils = document.querySelectorAll('.pupil-dark-dot');
+            const faceLayer = document.getElementById('liveFaceLayer');
+            
+            pupils.forEach((pupil) => {
+                const parentBox = pupil.parentElement.getBoundingClientRect();
+                const eyeX = parentBox.left + parentBox.width / 2;
+                const eyeY = parentBox.top + parentBox.height / 2;
+                
+                const relativeAngle = Math.atan2(clientY - eyeY, clientX - eyeX);
+                const travelDistance = Math.min(8, Math.hypot(clientX - eyeX, clientY - eyeY) / 32);
+                
+                const pupilShiftX = Math.cos(relativeAngle) * travelDistance;
+                const pupilShiftY = Math.sin(relativeAngle) * travelDistance;
+                pupil.style.transform = `translate(${pupilShiftX}px, ${pupilShiftY}px)`;
+            });
+
+            if(faceLayer) {
+                const bodyContainer = faceLayer.parentElement.getBoundingClientRect();
+                const bodyCenterX = bodyContainer.left + bodyContainer.width / 2;
+                const bodyCenterY = bodyContainer.top + bodyContainer.height / 2;
+                
+                const faceShiftX = (clientX - bodyCenterX) / 48;
+                const faceShiftY = (clientY - bodyCenterY) / 52;
+                
+                faceLayer.style.transform = `translate(${faceShiftX}px, ${faceShiftY}px)`;
+            }
+        }
+
+        window.addEventListener('mousemove', (e) => { trackLookAt(e.clientX, e.clientY); });
+        window.addEventListener('touchmove', (e) => { if (e.touches.length > 0) { trackLookAt(e.touches[0].clientX, e.touches[0].clientY); } }, { passive: true });
+        window.addEventListener('touchstart', (e) => { if (e.touches.length > 0) { trackLookAt(e.touches[0].clientX, e.touches[0].clientY); } }, { passive: true });
+    </script>
+</body>
+</html>

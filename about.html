@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About AmanHotDev | Core Architecture 🧠</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: #0a0f1d; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        
+        /* 🌌 NAVIGATION BAR */
+        .navbar { background: rgba(10, 15, 29, 0.85); backdrop-filter: blur(12px); width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: sticky; top: 0; z-index: 100; }
+        .brand-name { font-size: 1.6rem; font-weight: 800; color: #ffffff; letter-spacing: -1px; cursor: pointer; }
+        .brand-name span { color: #00ffcc; }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #00ffcc; text-shadow: 0 0 10px rgba(0, 255, 204, 0.5); }
+
+        /* 🧠 ABOUT MAIN LAYOUT */
+        .about-section { flex: 1; padding: 60px 8%; max-width: 1200px; margin: 0 auto; width: 100%; }
+        
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .section-title span { background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* 📱 BIO ARCHITECTURE */
+        .bio-card { background: #070a14; border: 1px solid rgba(255,255,255,0.03); border-radius: 24px; padding: 40px; position: relative; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); margin-bottom: 40px; line-height: 1.8; }
+        .bio-card::after { content: ''; position: absolute; inset: 0; border-radius: 24px; padding: 1px; background: linear-gradient(135deg, rgba(0,255,204,0.1), rgba(0,188,255,0.1)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+        .bio-text { color: #94a3b8; font-size: 1.1rem; margin-bottom: 20px; }
+        .bio-text span { color: #ffffff; font-weight: 600; }
+
+        /* ⚡ SKILLS & METRICS GRID */
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .sub-card { background: #070a14; border: 1px solid rgba(255,255,255,0.03); border-radius: 20px; padding: 30px; position: relative; }
+        .sub-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; display: flex; align-items: center; gap: 10px; }
+        .sub-card h3 span { color: #00ffcc; }
+
+        /* Tech Badges Stack */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag { background: #0a0f1d; border: 1px solid rgba(255, 255, 255, 0.06); color: #ffffff; padding: 8px 16px; border-radius: 12px; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
+        .skill-tag:hover { border-color: #00ffcc; color: #00ffcc; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 255, 204, 0.1); }
+
+        /* Workflow List */
+        .workflow-list { list-style: none; }
+        .workflow-list li { color: #94a3b8; font-size: 0.95rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .workflow-list li::before { content: '⚡'; color: #00bcff; font-size: 0.8rem; }
+
+        /* 🚀 CTA BUTTON */
+        .about-actions { text-align: center; margin-top: 50px; }
+        .btn-cta { inline-block: true; text-decoration: none; background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%); color: #0a0f1d; padding: 16px 40px; border-radius: 12px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 8px 25px rgba(0, 255, 204, 0.2); transition: 0.3s ease; }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 255, 204, 0.4); }
+
+        footer { width: 100%; text-align: center; padding: 25px; color: #475569; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.03); background: #070a14; margin-top: auto; }
+
+        @media (max-width: 768px) { .navbar { padding: 15px 6%; } .section-title { font-size: 2rem; } .bio-card { padding: 25px; } }
+        @media (max-width: 480px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <!-- 🌌 NAVIGATION SEGMENT -->
+    <nav class="navbar">
+        <div class="brand-name" onclick="window.location.href='index.html'">Aman<span>Hot<span>Dev</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="hire.html">Hire Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🧠 MAIN ABOUT ARCHITECTURE -->
+    <section class="about-section">
+        <div class="section-header">
+            <h2 class="section-title">Identity <span>Matrix</span></h2>
+        </div>
+
+        <!-- 👤 BIO OVERVIEW -->
+        <div class="bio-card">
+            <p class="bio-text">Hello! I'm <span>AmanHotDev</span>, a passionate software developer specializing in building modern web systems, automated workflows, and continuous deployments. I engineer fast, responsive, and secure web environments from scratch.</p>
+            <p class="bio-text">My philosophy is simple: write <span>clean code</span>, architect scalable databases, and create immersive UI/UX systems that keep users engaged. I specialize in turning complex ideas into functional web pipelines.</p>
+        </div>
+
+        <!-- 📊 DETAILED SKILLS & WORKFLOW GRID -->
+        <div class="grid-layout">
+            
+            <!-- TECH STACK CAPABILITIES -->
+            <div class="sub-card">
+                <h3><span>📁</span> Core Tech Stack</h3>
+                <div class="skills-container">
+                    <span class="skill-tag">HTML5 / CSS3</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">Firebase Systems</span>
+                    <span class="skill-tag">Git / GitHub</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">UI / UX Architecture</span>
+                    <span class="skill-tag">Node.js Engine</span>
+                </div>
+            </div>
+
+            <!-- WORKFLOW & VALUE PIPELINES -->
+            <div class="sub-card">
+                <h3><span>⚙️</span> Development Workflow</h3>
+                <ul class="workflow-list">
+                    <li>Optimized Mobile-First Responsive Systems</li>
+                    <li>Secure Inbound Form and Data Routing</li>
+                    <li>Real-Time NoSQL Cloud Syncing Nodes</li>
+                    <li>Highly Detailed Audio and Visual Grid Designs</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- 🚀 ACTION DOCK -->
+        <div class="about-actions">
+            <a href="hire.html" class="btn-cta">Initiate Connection 🚀</a>
+        </div>
+    </section>
+
+    <!-- 🌐 FOOTER RUNTIME -->
+    <footer>&copy; 2026 AmanHotDev Systems. Engineered for continuous excellence.</footer>
+
+</body>
+</html>
