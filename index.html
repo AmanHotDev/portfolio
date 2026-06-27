@@ -228,8 +228,14 @@
         .card-desc { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
         .loading-text { text-align: center; color: #00bcff; font-size: 1.1rem; width: 100%; font-weight: 600; }
         
-        .btn-mini-view { display: inline-block; text-decoration: none; background: rgba(0,255,204,0.1); color: #00ffcc; border: 1px solid rgba(0,255,204,0.2); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-align: center; transition: 0.3s; width: fit-content; }
-        .btn-mini-view:hover { background: #00ffcc; color: #0a0f1d; }
+        /* 🐙 UPGRADED CARD CONTROLS ACTION DOCK */
+        .card-actions-dock { display: flex; gap: 12px; margin-top: auto; flex-wrap: wrap; }
+        
+        .btn-mini-view { flex: 1; text-decoration: none; background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%); color: #0a0f1d; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-align: center; transition: 0.3s; box-shadow: 0 4px 12px rgba(0, 255, 204, 0.15); }
+        .btn-mini-view:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0, 255, 204, 0.3); }
+
+        .btn-mini-github { flex: 1; text-decoration: none; background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 9px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-align: center; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .btn-mini-github:hover { background: #ffffff; color: #0a0f1d; border-color: #ffffff; }
 
         footer {
             width: 100%; text-align: center; padding: 35px; color: #475569;
@@ -256,6 +262,7 @@
             .hero-right { height: 260px; }
             .portfolio-grid, .services-grid { grid-template-columns: 1fr; }
             .bio-card { padding: 25px; }
+            .card-actions-dock { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -420,6 +427,9 @@
 
                         // 💡 2. Dynamic Live Link Injection: Anchor tag read document field URL directly
                         const targetUrl = data.liveLink ? data.liveLink : "index.html";
+                        
+                        // 💡 3. Dynamic GitHub Link Injection: Agar admin field me link nahi hai to hidden/fallback rakhein
+                        const githubUrl = data.githubLink ? data.githubLink : "#projects";
 
                         const projectCard = `
                             <div class="project-card">
@@ -428,7 +438,10 @@
                                     <h3 class="card-title">${data.title}</h3>
                                     <p class="card-desc">${data.desc || 'No system specs provided.'}</p>
                                 </div>
-                                <a href="${targetUrl}" class="btn-mini-view">Explore Node 📁</a>
+                                <div class="card-actions-dock">
+                                    <a href="${targetUrl}" target="_blank" class="btn-mini-view">Live Demo 📁</a>
+                                    <a href="${githubUrl}" target="_blank" class="btn-mini-github" ${data.githubLink ? '' : 'style="display:none;"'}>GitHub 🐙</a>
+                                </div>
                             </div>
                         `;
                         homeProjectsContainer.innerHTML += projectCard;
