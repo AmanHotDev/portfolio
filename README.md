@@ -52,5 +52,3 @@ An ultra-premium, responsive full-stack portfolio ecosystem featuring a next-gen
 ## ⚡ Setup & Deployment Vectors
 
 1. Clone or pull the core files directly into your local storage layout:
-   ```bash
-   git clone [https://github.com/amanhotdev/AmanHotDev-Portfolio.git](https://github.com/amanhotdev/AmanHotDev-Portfolio.git)
