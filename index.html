@@ -42,6 +42,59 @@
         }
         .nav-links a:hover { color: #00ffcc; text-shadow: 0 0 10px rgba(0, 255, 204, 0.5); }
 
+        /* 📱 🏁 NEW: PREMIUM MOBILE HAMBURGER BUTTON (THREE LINES) */
+        .mobile-menu-trigger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1005;
+            padding: 4px;
+        }
+        .mobile-menu-trigger span {
+            width: 28px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* थ्री-लाइंस एनिमेटेड एक्टिव स्टेट */
+        .mobile-menu-trigger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: #00ffcc; }
+        .mobile-menu-trigger.active span:nth-child(2) { opacity: 0; }
+        .mobile-menu-trigger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: #00ffcc; }
+
+        /* 📱 🚀 NEW: MOBILE SLIDE-IN DRAWER OVERLAY */
+        .mobile-sidebar-drawer {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(7, 10, 20, 0.96);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(0, 255, 204, 0.1);
+            padding: 100px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        }
+        .mobile-sidebar-drawer.open-drawer { right: 0; }
+        .mobile-sidebar-drawer a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: 0.2s;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+        .mobile-sidebar-drawer a:hover { color: #00ffcc; padding-left: 6px; }
+
         /* 🚀 HERO DYNAMIC LAYOUT */
         .hero-section {
             min-height: calc(100vh - 80px);
@@ -213,7 +266,7 @@
             background: linear-gradient(90deg, transparent, rgba(0,255,204,0.2), transparent);
         }
 
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; }
         .project-card {
             background: #070a14; border: 1px solid rgba(255,255,255,0.03);
             padding: 35px 30px; border-radius: 16px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -228,7 +281,7 @@
         .card-desc { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
         .loading-text { text-align: center; color: #00bcff; font-size: 1.1rem; width: 100%; font-weight: 600; }
         
-        /* 🐙 UPGRADED CARD CONTROLS ACTION DOCK */
+        /* 🐙 CARD CONTROLS ACTION DOCK */
         .card-actions-dock { display: flex; gap: 12px; margin-top: auto; flex-wrap: wrap; }
         
         .btn-mini-view { flex: 1; text-decoration: none; background: linear-gradient(135deg, #00ffcc 0%, #00bcff 100%); color: #0a0f1d; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-align: center; transition: 0.3s; box-shadow: 0 4px 12px rgba(0, 255, 204, 0.15); }
@@ -255,8 +308,13 @@
             .hero-title { font-size: 2.8rem; }
         }
 
-        @media (max-width: 580px) {
+        @media (max-width: 768px) {
+            /* 🎯 लैपटॉप मेनू छुपाएं और मोबाइल थ्री-लाइंस इनेबल करें */
             .nav-links { display: none; }
+            .mobile-menu-trigger { display: flex; }
+        }
+
+        @media (max-width: 580px) {
             .hero-title { font-size: 2.3rem; }
             .avatar-responsive-wrapper { transform: scale(0.75); }
             .hero-right { height: 260px; }
@@ -270,6 +328,7 @@
 
     <nav class="navbar">
         <div class="brand-name">Aman<span>Hot</span>Dev</div>
+        
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -278,7 +337,22 @@
             <li><a href="reviews.html">Reviews</a></li>
             <li><a href="arcade.html">Arcade</a></li>
         </ul>
+
+        <button class="mobile-menu-trigger" id="hamburgerBtn" onclick="toggleMobileSidebarMenu()" title="Open Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <div class="mobile-sidebar-drawer" id="mobileSidebarDrawerShell">
+        <a href="#home" onclick="toggleMobileSidebarMenu()">Home</a>
+        <a href="#about" onclick="toggleMobileSidebarMenu()">About</a>
+        <a href="#services" onclick="toggleMobileSidebarMenu()">Services</a>
+        <a href="#projects" onclick="toggleMobileSidebarMenu()">Projects</a>
+        <a href="reviews.html" onclick="toggleMobileSidebarMenu()">Reviews</a>
+        <a href="arcade.html" onclick="toggleMobileSidebarMenu()">Arcade</a>
+    </div>
 
     <section class="hero-section" id="home">
         <div class="hero-left">
@@ -420,15 +494,11 @@
                     querySnapshot.forEach((doc) => {
                         const data = doc.data();
                         
-                        // 💡 1. Undefined Filter Check: Agar Data invalid ya undefined hai to skip karein
                         if (!data || !data.title || data.title === "undefined" || data.title.trim() === "") {
                             return; 
                         }
 
-                        // 💡 2. Dynamic Live Link Injection: Anchor tag read document field URL directly
                         const targetUrl = data.liveLink ? data.liveLink : "index.html";
-                        
-                        // 💡 3. Dynamic GitHub Link Injection: Agar admin field me link nahi hai to hidden/fallback rakhein
                         const githubUrl = data.githubLink ? data.githubLink : "#projects";
 
                         const projectCard = `
@@ -447,7 +517,6 @@
                         homeProjectsContainer.innerHTML += projectCard;
                     });
 
-                    // Check if after filtering, container is empty
                     if(homeProjectsContainer.innerHTML.trim() === "") {
                         homeProjectsContainer.innerHTML = `<p class="loading-text" style='color: #64748b;'>No valid cloud records found.</p>`;
                     }
@@ -459,6 +528,15 @@
         }
 
         window.addEventListener('DOMContentLoaded', syncHomeProjects);
+
+        /* ================= 📱 NEW: MOBILE INTERACTIVE SIDEBAR TOGGLE LOGIC ================= */
+        function toggleMobileSidebarMenu() {
+            const btn = document.getElementById('hamburgerBtn');
+            const drawer = document.getElementById('mobileSidebarDrawerShell');
+            
+            btn.classList.toggle('active');
+            drawer.classList.toggle('open-drawer');
+        }
 
         // Core Eye Tracking Logic Function
         function trackLookAt(clientX, clientY) {
